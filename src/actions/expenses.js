@@ -13,6 +13,7 @@ const addExpense = ({
     note,
     description,
     createdAt,
+    amount,
   },
 });
 // REMOVE EXPENSE

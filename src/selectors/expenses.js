@@ -21,4 +21,4 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     });
 };
 
-export { getVisibleExpenses };
+export default getVisibleExpenses;

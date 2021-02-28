@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
+import { ExpenseForm } from "./ExpenseForms";
 
 const AddExpensePage = () => (
-    <div>This if my add expense component</div>
-)
+  <div>
+    <h1>Add Expense</h1>
+    <ExpenseForm />
+  </div>
+);
 
-export { AddExpensePage }
+export { AddExpensePage };

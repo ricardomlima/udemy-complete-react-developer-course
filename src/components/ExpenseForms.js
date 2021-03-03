@@ -3,6 +3,7 @@ import moment from "moment";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import { SingleDatePicker } from "react-dates";
+import { createStore } from "redux";
 
 class ExpenseForm extends React.Component {
   static displayName = "ExpenseForm";
@@ -12,6 +13,7 @@ class ExpenseForm extends React.Component {
     amount: "",
     createdAt: moment(),
     calendarFocused: false,
+    errorState: "",
   };
   onDescriptionChange = (e) => {
     const description = e.target.value;
@@ -23,21 +25,41 @@ class ExpenseForm extends React.Component {
   };
   onAmountChange = (e) => {
     const amount = e.target.value;
-    if (amount.match(/^\d*(\.\d{0,2})?$/)) {
+    if (!amount || amount.match(/^\d*(\.\d{1,})?$/)) {
       this.setState(() => ({ amount }));
     }
   };
   onDateChange = (createdAt) => {
-    this.setState({ createdAt });
+    if (createdAt) {
+      this.setState({ createdAt });
+    }
   };
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
+  };
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    if (!this.state.description || !this.state.amount) {
+      this.setState(() => ({
+        errorState: "Please provide description and amount.",
+      }));
+    } else {
+      this.setState(() => ({ errorState: "" }));
+      this.props.onSubmit({
+        description: this.state.description,
+        amount: parseFloat(this.state.amount) * 100,
+        createdAt: this.state.createdAt.valueOf(),
+        note: this.state.note,
+      });
+      console.log("submitted");
+    }
   };
 
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <input
             type="text"
             placeholder="description"
@@ -64,7 +86,9 @@ class ExpenseForm extends React.Component {
             placeholder="add a note for your expense"
             value={this.state.note}
           />
+          <input type="submit" />
         </form>
+        {this.state.errorState && <div>{this.state.errorState}</div>}
       </div>
     );
   }

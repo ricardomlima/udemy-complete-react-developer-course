@@ -7,14 +7,19 @@ import { createStore } from "redux";
 
 class ExpenseForm extends React.Component {
   static displayName = "ExpenseForm";
-  state = {
-    description: "",
-    note: "",
-    amount: "",
-    createdAt: moment(),
-    calendarFocused: false,
-    errorState: "",
-  };
+  constructor(props) {
+    super(props);
+    console.log(props.expense);
+    this.state = {
+      description: props.expense ? props.expense.description : "",
+      note: props.expense ? props.expense.note : "",
+      amount: props.expense ? (props.expense.amount / 100).toString() : "",
+      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+      calendarFocused: false,
+      errorState: "",
+    };
+  }
+
   onDescriptionChange = (e) => {
     const description = e.target.value;
     this.setState(() => ({ description }));

@@ -1,5 +1,5 @@
 // SET_TEXT_FILTER
-const setTextFilter = (text) => ({
+const setTextFilter = (text = "") => ({
   type: "SET_TEXT_FILTER",
   text,
 });
@@ -18,12 +18,12 @@ const sortByAmount = () => ({
 
 // SET_START_DATE
 const setStartDate = (startDate) => ({
-  type: "SORT_START_DATE",
+  type: "SET_START_DATE",
   startDate,
 });
 // SET_END_DATE
 const setEndDate = (endDate) => ({
-  type: "SORT_END_DATE",
+  type: "SET_END_DATE",
   endDate,
 });
 

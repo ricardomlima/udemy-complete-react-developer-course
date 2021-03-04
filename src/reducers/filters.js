@@ -19,12 +19,12 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
         ...state,
         sortBy: action.sortBy,
       };
-    case "SORT_START_DATE":
+    case "SET_START_DATE":
       return {
         ...state,
         startDate: action.startDate,
       };
-    case "SORT_END_DATE":
+    case "SET_END_DATE":
       return {
         ...state,
         endDate: action.endDate,

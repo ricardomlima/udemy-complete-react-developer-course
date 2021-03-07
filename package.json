@@ -13,9 +13,13 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^5.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1",
     "live-server": "^1.2.1",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
+    "raf": "^3.4.1",
     "react": "^17.0.1",
     "react-addons-shallow-compare": "^15.6.3",
     "react-dates": "^21.8.0",
@@ -36,7 +40,7 @@
     "build": "webpack",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "dev-server": "webpack serve",
-    "test": "jest --watch"
+    "test": "jest --config=jest.config.json --watch"
   },
   "devDependencies": {
     "jest": "20.0.4",

@@ -1,15 +1,13 @@
 import React from "react";
 import moment from "moment";
 import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
 import { SingleDatePicker } from "react-dates";
-import { createStore } from "redux";
 
 class ExpenseForm extends React.Component {
   static displayName = "ExpenseForm";
   constructor(props) {
     super(props);
-    console.log(props.expense);
+
     this.state = {
       description: props.expense ? props.expense.description : "",
       note: props.expense ? props.expense.note : "",

@@ -31,9 +31,11 @@ test("should handle editExpense", () => {
   expect(editExpense).toHaveBeenCalledWith(expense.id, {
     description: "a test",
   });
+  expect(history.push).toHaveBeenCalledWith("/");
 });
 
 test("should handle removeExpense", () => {
-  wrapper.find("button").prop("onClick")();
+  wrapper.find("button").simulate("click");
   expect(removeExpense).toHaveBeenCalledWith({ id: expense.id });
+  expect(history.push).toHaveBeenCalledWith("/");
 });

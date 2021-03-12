@@ -22,5 +22,13 @@ test("should render EditExpensePage", () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-test("should handle editExpense", () => {});
+test("should handle editExpense", () => {
+  wrapper.find("ExpenseForm").prop("onSubmit")({
+    description: "a test",
+  });
+  expect(editExpense).toHaveBeenCalledWith(expense.id, {
+    description: "a test",
+  });
+});
+
 test("should handle removeExpense", () => {});

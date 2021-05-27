@@ -40,11 +40,12 @@
     "build": "webpack --config webpack.dev.js",
     "build:prod": "webpack --config webpack.dev.js",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
-    "dev-server": "webpack serve",
+    "dev-server": "webpack serve --config=webpack.dev.js",
     "test": "jest --config=jest.config.json --watch"
   },
   "devDependencies": {
     "jest": "20.0.4",
+    "mini-css-extract-plugin": "^1.6.0",
     "webpack-cli": "^4.1.0",
     "webpack-merge": "^5.7.3"
   }

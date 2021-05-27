@@ -16,6 +16,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.1",
+    "express": "^4.17.1",
     "live-server": "^1.2.1",
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
@@ -37,8 +38,8 @@
   },
   "scripts": {
     "serve": "live-server public/",
-    "build": "webpack --config webpack.dev.js",
-    "build:prod": "webpack --config webpack.dev.js",
+    "build": "NODE_ENV=dev webpack --config webpack.dev.js",
+    "build:prod": "NODE_ENV=production webpack --config webpack.dev.js",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "dev-server": "webpack serve --config=webpack.dev.js",
     "test": "jest --config=jest.config.json --watch"

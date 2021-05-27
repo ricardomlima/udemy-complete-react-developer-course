@@ -42,7 +42,9 @@
     "build:prod": "NODE_ENV=production webpack --config webpack.dev.js",
     "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "dev-server": "webpack serve --config=webpack.dev.js",
-    "test": "jest --config=jest.config.json --watch"
+    "test": "jest --config=jest.config.json --watch",
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn run build:prod"
   },
   "devDependencies": {
     "jest": "20.0.4",

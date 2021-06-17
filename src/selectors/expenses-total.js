@@ -1,4 +1,5 @@
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
 const selectExpensesTotal = (expenses) => {
   if (expenses.lenth === 0) {
     return 0;

@@ -15,13 +15,16 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 
 firebase.database().ref().set({
-    'name': 'Ricardo Lima'
+    'name': 'Ricardo Lima',
+    'age': 31,
+    'location': 'Manaus'
 }).then((data) => {
     console.log('data successfully added')
 })
 
 firebase.database().ref().update({
-    'name': 'Mariana'
+    'name': 'Mariana',
+    'age': 25
 }).then((data) => {
     console.log('data successfully updated')
 })

@@ -24,7 +24,8 @@ firebase.database().ref().set({
 
 firebase.database().ref().update({
     'name': 'Mariana',
-    'age': 25
+    'age': 25,
+    'job': 'Manager'
 }).then((data) => {
     console.log('data successfully updated')
 })

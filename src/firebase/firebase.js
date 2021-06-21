@@ -15,4 +15,6 @@ firebase.initializeApp(firebaseConfig);
 
 firebase.database().ref().set({
     'name': 'Ricardo Lima'
+}).then((data) => {
+    console.log('data successfully added')
 })

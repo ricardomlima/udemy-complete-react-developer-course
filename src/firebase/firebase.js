@@ -17,7 +17,10 @@ const app = firebase.initializeApp(firebaseConfig);
 firebase.database().ref().set({
     'name': 'Ricardo Lima',
     'age': 31,
-    'location': 'Manaus'
+    'location': {
+        'city': 'Manaus',
+        'country': 'Brazil'
+    }
 }).then((data) => {
     console.log('data successfully added')
 })
@@ -25,7 +28,16 @@ firebase.database().ref().set({
 firebase.database().ref().update({
     'name': 'Mariana',
     'age': 25,
-    'job': 'Manager'
+    'job': 'Manager',
+    'location/city':  'Joinville' //changes only the nested key city value and country stays untouched
+}).then((data) => {
+    console.log('data successfully updated')
+})
+
+firebase.database().ref().update({
+    'location': {
+        'city': 'Joinville' // rewrite the whole location object, removing the country key
+    }
 }).then((data) => {
     console.log('data successfully updated')
 })

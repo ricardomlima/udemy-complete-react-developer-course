@@ -14,12 +14,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 
-// firebase.database().ref().set({
-//     'name': 'Ricardo Lima'
-// }).then((data) => {
-//     console.log('data successfully added')
-// })
+firebase.database().ref().set({
+    'name': 'Ricardo Lima'
+}).then((data) => {
+    console.log('data successfully added')
+})
 
-firebase.database().ref().remove().then((data) => {
-    console.log('data removed')
+firebase.database().ref().update({
+    'name': 'Mariana'
+}).then((data) => {
+    console.log('data successfully updated')
 })

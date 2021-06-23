@@ -57,3 +57,16 @@ database.ref().once('value')
 database.ref().on('value', (snapshot) => {
     console.log(snapshot.val())
 })
+
+setTimeout(() => {
+    database.ref('age').set(31)
+}, 3000)
+
+setTimeout(() => {
+    database.ref().off()
+
+}, 7000)
+
+setTimeout(() => {
+    database.ref('age').set(32)
+}, 10000)

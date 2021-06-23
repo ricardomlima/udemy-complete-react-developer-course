@@ -54,7 +54,7 @@ database.ref().once('value')
         console.log(e)
     })
 
-database.ref().on('value', (snapshot) => {
+const onValueChangeFn = database.ref().on('value', (snapshot) => {
     console.log(snapshot.val())
 })
 
@@ -63,7 +63,7 @@ setTimeout(() => {
 }, 3000)
 
 setTimeout(() => {
-    database.ref().off()
+    database.ref().off('value', onValueChangeFn)
 
 }, 7000)
 

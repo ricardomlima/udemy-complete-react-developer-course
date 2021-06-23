@@ -53,3 +53,7 @@ database.ref().once('value')
     .catch((e) => {
         console.log(e)
     })
+
+database.ref().on('value', (snapshot) => {
+    console.log(snapshot.val())
+})

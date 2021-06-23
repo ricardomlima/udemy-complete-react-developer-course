@@ -41,3 +41,14 @@ firebase.database().ref().update({
 }).then((data) => {
     console.log('data successfully updated')
 })
+
+
+// get the snapshot of data at the time the function runs
+firebase.database().ref().once('value')
+    .then((snapshot) => {
+        const val = snapshot.val();
+        console.log(val)
+    })
+    .catch((e) => {
+        console.log(e)
+    })

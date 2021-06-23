@@ -13,8 +13,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
+const database = app.database()
 
-firebase.database().ref().set({
+database.ref().set({
     'name': 'Ricardo Lima',
     'age': 31,
     'location': {
@@ -25,7 +26,7 @@ firebase.database().ref().set({
     console.log('data successfully added')
 })
 
-firebase.database().ref().update({
+database.ref().update({
     'name': 'Mariana',
     'age': 25,
     'job': 'Manager',
@@ -34,7 +35,7 @@ firebase.database().ref().update({
     console.log('data successfully updated')
 })
 
-firebase.database().ref().update({
+database.ref().update({
     'location': {
         'city': 'Joinville' // rewrite the whole location object, removing the country key
     }
@@ -44,7 +45,7 @@ firebase.database().ref().update({
 
 
 // get the snapshot of data at the time the function runs
-firebase.database().ref().once('value')
+database.ref().once('value')
     .then((snapshot) => {
         const val = snapshot.val();
         console.log(val)

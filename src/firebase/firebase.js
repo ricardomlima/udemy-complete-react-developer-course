@@ -15,58 +15,14 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database()
 
-database.ref().set({
-    'name': 'Ricardo Lima',
-    'age': 31,
-    'location': {
-        'city': 'Manaus',
-        'country': 'Brazil'
-    }
-}).then((data) => {
-    console.log('data successfully added')
+// adding to the notes list
+database.ref('notes').push({
+    title: "Course Topics",
+    body: "React native, Angular, Python"
 })
 
-database.ref().update({
-    'name': 'Mariana',
-    'age': 25,
-    'job': 'Manager',
-    'location/city':  'Joinville' //changes only the nested key city value and country stays untouched
-}).then((data) => {
-    console.log('data successfully updated')
+// Copying the id from the notes list in firebase console
+// and updating specific note
+database.ref("notes/-MdEHpDWNbWOLAMS3g8U").update({
+    body: "Buy food"
 })
-
-database.ref().update({
-    'location': {
-        'city': 'Joinville' // rewrite the whole location object, removing the country key
-    }
-}).then((data) => {
-    console.log('data successfully updated')
-})
-
-
-// get the snapshot of data at the time the function runs
-database.ref().once('value')
-    .then((snapshot) => {
-        const val = snapshot.val();
-        console.log(val)
-    })
-    .catch((e) => {
-        console.log(e)
-    })
-
-const onValueChangeFn = database.ref().on('value', (snapshot) => {
-    console.log(snapshot.val())
-})
-
-setTimeout(() => {
-    database.ref('age').set(31)
-}, 3000)
-
-setTimeout(() => {
-    database.ref().off('value', onValueChangeFn)
-
-}, 7000)
-
-setTimeout(() => {
-    database.ref('age').set(32)
-}, 10000)

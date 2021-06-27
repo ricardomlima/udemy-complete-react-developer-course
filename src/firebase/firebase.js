@@ -15,5 +15,18 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database()
 
-// deletinng a note by it's id copied from firebase console
-database.ref("notes/-MdEHpDWNbWOLAMS3g8U").remove()
+// adding expenses
+database.ref("expenses").push({
+    description: "coffee",
+    amount: 1200
+})
+
+database.ref("expenses").push({
+    description: "lunch",
+    amount: 5000
+})
+
+database.ref("expenses").push({
+    description: "toy",
+    amount: 15000
+})

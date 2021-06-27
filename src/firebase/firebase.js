@@ -16,15 +16,6 @@ const app = firebase.initializeApp(firebaseConfig);
 const database = app.database()
 
 // adding expenses
-database.ref("expenses")
-    .on("value", (snapshot) => {
-        const expenses = []
-        snapshot.forEach((childSnapshot) => {
-            expenses.push({
-                id: childSnapshot.key,
-                ...childSnapshot.val()
-            })
-        })
-
-        console.log(expenses)
+database.ref("expenses").on("child_removed", (snapshot) => {
+        console.log(snapshot.key, snapshot.val())
     })

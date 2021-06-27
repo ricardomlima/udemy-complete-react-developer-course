@@ -19,5 +19,13 @@ const database = app.database()
 database.ref("expenses")
     .once("value")
     .then((snapshot) => {
-        console.log(snapshot.val())
+        const expenses = []
+        snapshot.forEach((childSnapshot) => {
+            expenses.push({
+                id: childSnapshot.key,
+                ...childSnapshot.val()
+            })
+        })
+
+        console.log(expenses)
     })

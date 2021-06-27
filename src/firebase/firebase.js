@@ -15,14 +15,5 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database()
 
-// adding to the notes list
-database.ref('notes').push({
-    title: "Course Topics",
-    body: "React native, Angular, Python"
-})
-
-// Copying the id from the notes list in firebase console
-// and updating specific note
-database.ref("notes/-MdEHpDWNbWOLAMS3g8U").update({
-    body: "Buy food"
-})
+// deletinng a note by it's id copied from firebase console
+database.ref("notes/-MdEHpDWNbWOLAMS3g8U").remove()

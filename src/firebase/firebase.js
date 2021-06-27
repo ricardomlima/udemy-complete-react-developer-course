@@ -16,17 +16,8 @@ const app = firebase.initializeApp(firebaseConfig);
 const database = app.database()
 
 // adding expenses
-database.ref("expenses").push({
-    description: "coffee",
-    amount: 1200
-})
-
-database.ref("expenses").push({
-    description: "lunch",
-    amount: 5000
-})
-
-database.ref("expenses").push({
-    description: "toy",
-    amount: 15000
-})
+database.ref("expenses")
+    .once("value")
+    .then((snapshot) => {
+        console.log(snapshot.val())
+    })

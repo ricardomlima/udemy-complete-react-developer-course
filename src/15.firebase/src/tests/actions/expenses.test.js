@@ -51,10 +51,10 @@ test("should add expense to database and store", (done) => {
         ...expenseData
       }
     })
-    database.ref(`expenses/${actions[0].expense.id}`).once('value').then((snapshot) => {
-      expect(snapshot.val()).toEqual(expenseData);
-      done();
-    })
+    return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+  }).then((snapshot) => {
+    expect(snapshot.val()).toEqual(expenseData);
+    done();
   })
 })
 

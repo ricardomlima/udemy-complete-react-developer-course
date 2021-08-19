@@ -55,7 +55,6 @@ class ExpenseForm extends React.Component {
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note,
       });
-      console.log("submitted");
     }
   };
 

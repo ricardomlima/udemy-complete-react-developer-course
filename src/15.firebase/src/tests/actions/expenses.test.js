@@ -38,11 +38,18 @@ test("should add expense to database and store", (done) => {
   const expenseData = {
     description: "mouse",
     amount: 3000,
-    notes: "this one is better",
+    note: "this one is better",
     createdAt: 1000
   }
   store.dispatch(startAddExpense(expenseData)).then(() => {
-    expect(1).toBe(1);
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: 'ADD_EXPENSE',
+      expense: {
+        id: expect.any(String),
+        ...expenseData
+      }
+    })
     done();
   })
 })

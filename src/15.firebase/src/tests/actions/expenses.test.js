@@ -72,7 +72,7 @@ test("should setup add expense action object default values", () => {
       type: 'ADD_EXPENSE',
       expense: {
         id: expect.any(String),
-        ...expenseData
+        ...defaultExpenseData
       }
     })
     return database.ref(`expenses/${actions[0].expense.id}`).once('value');
